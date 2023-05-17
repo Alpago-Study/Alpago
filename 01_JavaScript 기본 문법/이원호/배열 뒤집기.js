@@ -13,7 +13,7 @@ function solution(num_list) {
   
   // 배열을 순회하며 빈배열(answer)에 num_list의 마지막 요소부터 차례대로 push함
   for(let i = 0 ; i < num_list.length ; i++){
-      answer.push(num_list[num_list.length - ( i+1)]);
+    answer.push(num_list[num_list.length - ( i+1)]);
   }
   return answer;
 }
