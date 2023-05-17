@@ -10,7 +10,7 @@
 
 function solution(my_string, n) {
   var answer = '';
-  
+
   // 자르는거니 slice를 이용해보자.
   // 자르는데 n에 따라 달라지는것은 slice의 '시작지점'이다.
   
@@ -19,7 +19,6 @@ function solution(my_string, n) {
   
   // slice의 첫번째 인자인 시작지점이 (문자열의 길이 - n) 임
   answer = my_string.slice(answerLen - n);
-  
   return answer;
 }
 
