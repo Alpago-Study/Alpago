@@ -7,7 +7,6 @@
 // [문제 링크]
 // : https://school.programmers.co.kr/learn/courses/30/lessons/120847
 
-
 function solution(numbers) {
     var answer = 0;
     let max = 0;  // 젤큰값 저장
