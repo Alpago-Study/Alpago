@@ -14,7 +14,7 @@
 // 주어집니다. s가 의미하는 원래 숫자를 return 하도록 solution 함수를 완성해주세요.
 
 // [문제 링크]
-// : https://school.programmers.co.kr/learn/courses/30/lessons/82612
+// : https://school.programmers.co.kr/learn/courses/30/lessons/81301
 
 function solution(s) {
   let answer = '';
