@@ -3,6 +3,10 @@ function solution(price, money, count) {
   for (let i = 1; i <= count; i++) {
     num += price * i;
   }
-  return num - money;
-  //시간초과로 실패
+  let result = num - money;
+  if (0 >= result) {
+    return 0;
+  } else {
+    return result;
+  }
 }
