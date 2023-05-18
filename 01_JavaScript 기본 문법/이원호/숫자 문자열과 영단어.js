@@ -27,6 +27,7 @@ function solution(s) {
   // 그냥 숫자 개별적으로 변수선언하면 안될듯
 
   // 숫자 - 영단어를 '객체'에 담기
+  // 추후 s 문자열의 영단어를 저장해 나가면서 객체속 프로퍼티가 존재하는지 여부를 조회할거임
 
   let wordToNumber = {
     zero: '0',
@@ -40,16 +41,16 @@ function solution(s) {
     eight: '8',
     nine: '9',
   };
-
+  //s 문자열의 영단어를 조회하기위해 비어있는 currentWord 변수 선언
+  // 결과를 담아둘 변수 선언
   let currentWord = '';
   let result = '';
 
   // 반복문을 돌며, 숫자가 아닌경우 => 영단어를 저장해 나가기
   for (let i = 0; i < s.length; i++) {
     // 숫자가 아닌지 판별하는 함수  숫자o false /  숫자x true
-    // 숫자가 아닌경우 현재단어에 영단어를 저장해 나가기
     if (isNaN(s[i])) {
-      currentWord = currentWord + s[i];
+      currentWord = currentWord + s[i]; // 숫자가 아닌경우 현재단어에 영단어를 저장해 나가기
 
       // 영단어를 저장해 나가는 중 현재의영단어가 wordToNumber 객체의 프로퍼티가 존재하는 경우에 result에 저장
       if (wordToNumber[currentWord]) {
@@ -57,7 +58,8 @@ function solution(s) {
         currentWord = ''; // 완성된 영단어가 있을때 currentWord 초기화 시켜주기
       }
     } else {
-      // 단어 미완성인경우
+      // 첫번재 if문의 else임
+      // 숫자일 경우 걍 더하기
       result = result + s[i];
     }
   }
