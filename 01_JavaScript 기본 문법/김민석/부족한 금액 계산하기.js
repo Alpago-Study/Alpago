@@ -16,7 +16,7 @@ const solution = (price, money, count) => {
     total += price * i;
   }
 
-  return total - money;
+  return total - money > 0 ? total - money : 0;
 
   // [reduce를 사용한 풀이]
   // return (
