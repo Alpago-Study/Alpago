@@ -22,3 +22,5 @@ function solution(participant, completion) {
 
   return answer;
 }
+
+//완주하지 못한 선수
