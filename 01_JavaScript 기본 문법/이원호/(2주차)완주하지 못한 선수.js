@@ -9,7 +9,7 @@
 // : https://school.programmers.co.kr/learn/courses/30/lessons/42576
 
 function solution(participant, completion) {
-  // participant 요소를 반복문을 통해 돌면서,
+  // completion 요소를 반복문을 통해 돌면서,
   // c 명단이 p에 있는지 확인하고(인덱스를 통해 확인예정),
   // 있는 경우 p복사본에서 없애 버릴거임 = > 그럼 나중에는 완주못한사람만 남을것이기 때문
 
