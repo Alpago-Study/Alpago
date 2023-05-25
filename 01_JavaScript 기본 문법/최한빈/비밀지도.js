@@ -34,10 +34,7 @@ function solution(n, arr1, arr2) {
   // secretMap의 원소를 원하는 형태로 변환
   // 각 자리가 2or1인 경우 #, 0이면 " " (ex. 02001 -> " #  #")
   return secretMap.map((ele) => {
-    return ('' + ele)
-      .replaceAll('2', '#')
-      .replaceAll('1', '#')
-      .replaceAll('0', ' ');
+    return ele.replaceAll('2', '#').replaceAll('1', '#').replaceAll('0', ' ');
   });
 }
 console.log(solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]));
