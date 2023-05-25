@@ -8,6 +8,9 @@
 // : https://school.programmers.co.kr/learn/courses/30/lessons/12926
 
 function solution(s, n) {
+  // 문자열에 +n 번째 문자열을 반환해야 하기 때문에,
+  // 문자열을 숫자로 바꾼 후 +n을 해준 뒤, 숫자를 다시 문자열로 반환할 예정
+
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'; // 알파벳 문자열
   const alphabetLength = alphabet.length;
 
