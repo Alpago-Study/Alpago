@@ -23,8 +23,10 @@ function solution(nums) {
   return answer;
 }
 
+// 소수 구하는 함수
 function isPrime(num) {
   for (let i = 2; i <= num / 2; i++) {
+    // 하나라도 나눠지는 수가 있으면 소수가 아니다
     if (num % i === 0) return false;
   }
   return true;
