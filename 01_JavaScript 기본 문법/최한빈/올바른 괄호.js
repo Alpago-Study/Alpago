@@ -33,16 +33,14 @@ function solution(s) {
   return count ? false : true;
 }
 // 질문하기 보고 수정한 코드
-// function solution(s){
-//     let count = 0
-//     for(let i =0; i<s.length;i++) {
-//         s[i]==="(" ? count++ : count--
+// function solution(s) {
+//   let count = 0;
+//   for (let i = 0; i < s.length; i++) {
+//     s[i] === '(' ? count++ : count--;
 
-//         if (count === -1) return false;
-
-//     }
-//     return count===0
-
+//     if (count === -1) return false;
+//   }
+//   return count === 0;
 // }
 // 삼항연산자가 if-else문 보다 성능이 좋다고 한다... 삼항연산자로 바꾸니 효율성 테스트가 통과됨.
 // 가독성 = if-else > 삼항연산자,  성능 = if-else < 삼항연산자
