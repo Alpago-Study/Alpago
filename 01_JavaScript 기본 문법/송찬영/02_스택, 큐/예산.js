@@ -11,11 +11,6 @@ function solution(d, budget) {
   for (let i = 0; i < d.length; i++) {
     queue.push(d[i]);
     total += d[i];
-
-    // 총 예산을 초과한 경우
-    while (total > budget) {
-      total -= queue.shift(); // 가장 예산이 큰 부서를 제외하고 큐에서 제거
-    }
   }
 
   return queue.length;
