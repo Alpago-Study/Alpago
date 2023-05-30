@@ -12,6 +12,4 @@ function solution(d, budget) {
     queue.push(d[i]);
     total += d[i];
   }
-
-  return queue.length;
 }
