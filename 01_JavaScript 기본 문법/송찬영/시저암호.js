@@ -1,4 +1,4 @@
-//실패했습니다. 이유를 모르겠습니다.
+// 정확성테스트 하나빼고 다틀렸습니다.
 function solution(s, n) {
   // for문을 돌릴까 생각했는데 아스키코드가 떠올라 찾아보니 인덱스번호를 이용하면 쉽게 가능할지도 모르겠다 생각했습니다.
   // A-Z를 아스키코드 인덱스 번호로 치환하면 65-90, a-z는 97-122, 공백은 32입니다.
@@ -20,29 +20,35 @@ function solution(s, n) {
         // 공백
         return [32, 0];
       } else if (num >= 97 && num <= 122) {
-        // az
+        // a, z
         return [num, 1];
       } else if (num >= 65 && num <= 90) {
-        // AZ
+        // A, Z
         return [num, 2];
       }
     })
     .map((idtNum) => {
-      // 여기 계산식이 이루어지지 않는 이유를 모르겠습니다... 여기만 해결되면 되는데... 리턴문은 괜찮은데 조건문이 문제가 있는거같습니다. 조건에 안걸립니다.
+      // 먼저 구현하려하지말고 그림을 그려보자.
+      // a b c ... x y z
+      // 입력 x 5 답: c, 2 3
+      // 입력 y 5 답: d, 1 4
+      // 입력 z 5 답: e, 0 5
+      // 5 - (122-x의아스키코드) 는 3이고 이 3을 97 + 3 하면 원하는 답이 나옴.
       if (idtNum[1] === 0) {
         return idtNum;
-      } else if (idtNum[1] === 1 && idtNum[0] > 122) {
+      } else if (idtNum[1] === 1 && idtNum[0] + n > 122) {
         // 식별자가 1이고(az 관련이고) 122(z) 보다 큰 경우
-        return [idtNum[0] - 26 + (n % 26), 1]; // a부터 n만큼 앞의 아스키코드를 리턴
-      } else if (idtNum[1] === 2 && idtNum[0] > 90) {
+        return [96 + n, 1]; // a부터 n만큼 밀어낸 아스키코드를 리턴
+      } else if (idtNum[1] === 2 && idtNum[0] + n > 90) {
         // 식별자가 2이고(AZ 관련이고) 90(Z) 보다 큰 경우
-        return [idtNum[0] - 26 + (n % 26), 2]; // A부터 n만큼 앞의 아스키코드로 리턴
+        return [64 + n, 2]; // A부터 n만큼 밀어낸 아스키코드로 리턴
       } else {
-        return idtNum;
+        return [idtNum[0] + n, 0];
       }
     })
     .reduce((a, b) => a.concat(b[0]), []) // 2차원배열에서 식별자떼고 1차원 배열로 변환
-    .map((convNum) => String.fromCharCode(convNum)); // String.fromCharCode(i)를 이용하여 숫자를 아스키코드 인덱스로 넣어서 알파벳 또는 공백으로 변환
+    .map((convNum) => String.fromCharCode(convNum))
+    .join(''); // String.fromCharCode(i)를 이용하여 숫자를 아스키코드 인덱스로 넣어서 알파벳 또는 공백으로 변환
   console.log(result);
 
   return result;
@@ -51,29 +57,3 @@ function solution(s, n) {
 solution('AB', 1);
 solution('z', 1);
 solution('a B z', 4);
-
-////////////////////////////////////////////////////////////////////////////////
-
-// Gpt 가 여러번 시도해서 성공한 코드
-// function solution(s, n) {
-//   let asciiCode = [];
-//   for (let i = 0; i < s.length; i++) {
-//     asciiCode.push(s.charCodeAt(i));
-//   }
-
-//   let result = asciiCode.map((num) => {
-//     if (num === 32) {
-//       return [32, 0];
-//     } else if (num >= 97 && num <= 122) {
-//       return [((num - 97 + n) % 26) + 97, 1];
-//     } else if (num >= 65 && num <= 90) {
-//       return [((num - 65 + n) % 26) + 65, 2];
-//     }
-//   });
-
-//   return result.map((idtNum) => String.fromCharCode(idtNum[0])).join("");
-// }
-
-// console.log(solution("AB", 1));
-// console.log(solution("z", 1));
-// console.log(solution("a B z", 4));
