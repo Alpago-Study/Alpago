@@ -19,6 +19,7 @@ function solution(board, moves) {
   //     [4,2,4,4,2]
   //     [3,5,1,3,1]
 
+  //   [1,5,3,5,1,2,1,4]  moves
   //     4
   //     x
   //     2
@@ -29,15 +30,37 @@ function solution(board, moves) {
   //     4
 
   //     move값에 따라 배열요소별로 move-1 인덱스에 있는 첫번째 값을 추출해서
-  //     stack 에
+  //     stack 에 넣기
 
-  // 뽑은 인형들 저장하는 배열
-  let stack = [];
+  // 뽑은 인형들 저장하는 스택
+  const stack = [];
+  let count = 0; // 터트려진 인형의 개수
 
-  // board는 2차원 배열 for문 2번을 통해 배열속 배열의 인덱스에 접근
-  for (let i = 0; i < board.length; i++) {}
-  for (let j = moves[j - 1]; j < board[i].length; j++) {}
-  return stack;
+  // moves 각 배열의 요소를 순회
+  for (let move of moves) {
+    const targetColumn = move - 1; // 움직일 열 번호는 move-1
+
+    for (let row = 0; row < board.length; row++) {
+      const doll = board[row][targetColumn]; // 현재 위치의 인형
+
+      if (doll !== 0) {
+        if (stack.length > 0 && stack[stack.length - 1] === doll) {
+          // 바구니의 가장 위 인형과 같은 모양의 인형이면 터트림
+          stack.pop();
+          count += 2; // 터진 인형은 2개이므로 count에 2 추가
+        } else {
+          // doll이 0 일경우 바구니에 인형을 넣음
+          stack.push(doll);
+        }
+
+        // 인형을 뽑았으므로 해당 위치는 빈 칸으로 표시
+        board[row][targetColumn] = 0;
+        break;
+      }
+    }
+  }
+
+  return count;
 }
 
 console.log(
