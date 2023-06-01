@@ -21,7 +21,35 @@
 // : https://school.programmers.co.kr/learn/courses/30/lessons/64061
 
 function solution(board, moves) {
-  var answer = 0;
+  let answer = 0;
+
+  const stack = [];
+
+  // move 1개씩 순환
+  moves.forEach((move) => {
+    // 배열의 1차원 순환
+    for (let i = 0; i < board.length; i++) {
+      let dall = board[i][move - 1];
+      // 인형이 0(빈 칸)인 경우 무시
+      if (dall === 0) continue;
+
+      // 0이 아닌 경우 인형을 뽑고 해당 칸 0 처리
+      board[i][move - 1] = 0;
+
+      // stack의 마지막 원소가 인형이랑 같은 경우
+      if (stack[stack.length - 1] === dall) {
+        // stack에서 제거하고 count
+        stack.pop();
+        answer += 2;
+      }
+
+      // stack에 인형 담기
+      else stack.push(dall);
+
+      // 인형이 stack에 반영된 경우 break
+      break;
+    }
+  });
   return answer;
 }
 
@@ -35,5 +63,16 @@ console.log(
       [3, 5, 1, 3, 1],
     ],
     [1, 5, 3, 5, 1, 2, 1, 4]
+  )
+);
+console.log(
+  solution(
+    [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ],
+    [1, 2, 3, 4]
   )
 );
