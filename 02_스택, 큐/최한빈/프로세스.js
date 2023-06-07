@@ -21,7 +21,7 @@
 // : https://school.programmers.co.kr/learn/courses/30/lessons/42587?language=javascript
 
 function solution(priorities, location) {
-  // 실행 프로세스를 담을 큐 선언
+  // 실행 대기중인 프로세스를 담을 큐 선언
   const queue = [];
 
   // 주어진 배열을 [위치, 우선순위] 형태로 변환하여 큐에 저장
@@ -44,7 +44,7 @@ function solution(priorities, location) {
     // queue에 맨 앞에 프로세스 pop
     const process = queue.shift();
 
-    // 뽑은 원소가 우선순위가 가장 높지 않다면 큐에 맨뒤로 보냄
+    // 뽑은 프로세스가 우선순위가 가장 높지 않다면 큐에 맨뒤로 보냄
     if (process[1] !== max[1]) {
       queue.push(process);
     }
