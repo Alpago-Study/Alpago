@@ -21,26 +21,14 @@ function solution(nums) {
   return result;
 }
 function primeArr(arr) {
-  let isPrime = true;
   for (let i = 7; i < 2997; i += 2) {
     for (let j = 1; j < arr.length; j++) {
-      if (i % arr[j] === 0) {
-        isPrime = false;
-        break;
+      if (i % arr[j] === 0) break;
+      if (j === arr.length - 1) {
+        arr.push(i);
       }
     }
-    if (isPrime) arr.push(i);
-    isPrime = true;
   }
 }
 
 console.log(solution([1, 2, 7, 6, 4]));
-// function A(num) {
-//   //짝수이면 소수X
-//   if (num % 2 === 0) return false;
-//   //3부터 제곱근까지 소수판별
-//   for (let i = 3; i <= sqrt(num); i += 2) {
-//     if (num % i === 0) return false;
-//   }
-//   return true;
-// }
