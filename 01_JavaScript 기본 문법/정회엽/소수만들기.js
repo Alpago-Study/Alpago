@@ -9,7 +9,6 @@
 function solution(nums) {
   let prime = [2, 3, 5];
   primeArr(prime);
-  console.log(prime);
   let result = 0;
   for (let i = 0; i < nums.length - 2; i++) {
     for (let j = i + 1; j < nums.length - 1; j++) {
@@ -36,13 +35,12 @@ function primeArr(arr) {
 }
 
 console.log(solution([1, 2, 7, 6, 4]));
-
-function A(num) {
-  //짝수이면 소수X
-  if (num % 2 === 0) return false;
-  //3부터 제곱근까지 소수판별
-  for (let i = 3; i <= sqrt(num); i += 2) {
-    if (num % i === 0) return false;
-  }
-  return true;
-}
+// function A(num) {
+//   //짝수이면 소수X
+//   if (num % 2 === 0) return false;
+//   //3부터 제곱근까지 소수판별
+//   for (let i = 3; i <= sqrt(num); i += 2) {
+//     if (num % i === 0) return false;
+//   }
+//   return true;
+// }
