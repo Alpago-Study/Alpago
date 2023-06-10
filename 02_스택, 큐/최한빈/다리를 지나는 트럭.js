@@ -25,6 +25,8 @@ function weightSum(crossing) {
 
   // 리듀스로 합 구했는데 5번 테스트 케이스에서 시간초과...
   // 혹시나 싶어 for문으로 처리해봤더니 통과...
+  // 단순 for문이 성능이 제일 좋다. 
+  // 반복문 성능 비교 -> https://daesuni.github.io/Loop-performance/
 
   // return crossing.reduce((acc, cur) => {
   //   return acc + cur;
