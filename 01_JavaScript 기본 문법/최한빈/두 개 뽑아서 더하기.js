@@ -55,5 +55,3 @@ function solution(numbers) {
 
 console.log(solution([2, 1, 3, 4, 1]));
 console.log(solution([5, 0, 2, 7]));
-
-// console.log(getCombinations([1, 2, 3, 4], 3));
