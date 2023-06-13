@@ -55,13 +55,18 @@ function solution(bridge_length, weight, truck_weights) {
     }
 
     // 대기 중인 트럭 중에 다리에 진입 가능한 트럭 확인(조건) 및 추가
-    if (
-      trucksWaiting.length > 0 &&
-      currentWeight + trucksWaiting[0] <= weight
-    ) {
-      const truckWeight = trucksWaiting.shift();
-      currentWeight += truckWeight;
-      trucksPassing.push({ weight: truckWeight, time: bridge_length });
+    // 대기중인 트럭이 있다면
+    if (trucksWaiting.length > 0) {
+      // 대기중인 첫번째 트럭을 선택하여 변수로 저장
+      const truckWeight = trucksWaiting[0];
+
+      // 현재 다리위에 있는 트럭들의 무게와 새로 다리로 진입할 트럭의 무게가 다리 하중보다 작은경우
+      if (currentWeight + truckWeight <= weight) {
+        // 대기중인 배열에서 빼고, trucksPassing 배열에 객체 형식으로 추가 (무게와 시간정보를 담기위해)
+        trucksWaiting.shift();
+        currentWeight += truckWeight;
+        trucksPassing.push({ weight: truckWeight, time: bridge_length });
+      }
     }
   }
 
