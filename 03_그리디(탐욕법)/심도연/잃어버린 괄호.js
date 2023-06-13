@@ -10,18 +10,15 @@
 // : https://www.acmicpc.net/problem/1541
 
 const lost_brackets = (question) => {
-  const step1 = question.split('-');
+  const step1 = question.split('-').map((cur) => cur.split('+'));
   console.log(step1);
 
-  const step2 = step1.map((cur) => cur.split('+'));
+  const step2 = step1.map((cur) => cur.reduce((acc, cur) => (acc += +cur), 0));
   console.log(step2);
 
-  const step3 = step2.map((cur) => cur.reduce((acc, cur) => (acc += +cur), 0));
-  console.log(step3);
-
-  let answer = step3[0];
-  for (let i = 1; i < step3.length; i++) {
-    answer -= step3[i];
+  let answer = step2[0];
+  for (let i = 1; i < step2.length; i++) {
+    answer -= step2[i];
   }
 
   console.log(answer);
