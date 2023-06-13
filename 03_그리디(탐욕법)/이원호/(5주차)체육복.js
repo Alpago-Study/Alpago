@@ -9,10 +9,11 @@
 // : https://school.programmers.co.kr/learn/courses/30/lessons/42862
 
 function solution(n, lost, reserve) {
-  // 현재 체육수업을 들을 수 있는 학생 수 ( resever 처리하기 전 )
+  // (reserve 처리하기 전) 현재 체육수업을 들을 수 있는 학생 수를 result에 저장
   // 밑의 lost 배열과 reserve 배열을 확인해가며, 조건 만족 시 result에 +1 씩 해줄거임
-
   let result = n - lost.length;
+
+  // 일부 테스트케이스(13,18 ) 통과를 위해 lost, reserve 배열 정렬해줘야함
   lost.sort();
   reserve.sort();
 
@@ -24,7 +25,7 @@ function solution(n, lost, reserve) {
         // 여분이 있는 경우, lost, reserve 배열에서 삭제
         lost.splice(i, 1);
         reserve.splice(j, 1);
-        result++; // 체육복을 빌리지 않아도 되는 학생 수 증가
+        result++; // 체육수업에 들을수 있는 학생수 +1
         i--; // 다음 도난 당한 학생 처리를 위해 인덱스 조정
         j--;
       }
@@ -34,11 +35,13 @@ function solution(n, lost, reserve) {
   // 도난 당한 학생들이 체육복을 빌리는 과정
   for (let i = 0; i < lost.length; i++) {
     for (let j = 0; j < reserve.length; j++) {
+      // 도난당한 학생 양쪽에 reserve를 가진 학생이 있는지 확인하는 조건문
       if (lost[i] + 1 === reserve[j] || lost[i] - 1 === reserve[j]) {
+        // 도난당한 학생 양쪽에 여분이 있는경우 lost, reserve 배열에서 삭제
         lost.splice(i, 1);
         reserve.splice(j, 1);
-        result++; // 체육복을 빌린 학생 수 증가
-        i--;
+        result++; // 체육수업에 들을수 있는 학생수 +1
+        i--; // 다음 반복문 처리를 위해 인덱스 조정
         j--;
       }
     }
