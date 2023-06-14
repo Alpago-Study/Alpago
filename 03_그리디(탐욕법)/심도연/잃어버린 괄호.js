@@ -24,4 +24,28 @@ const lost_brackets = (question) => {
   console.log(answer);
 };
 
-console.log(lost_brackets('10+20-30+40-50'));
+// function solution(expression) {
+//   let exp = expression.split('-');
+//   console.log(29, exp);
+
+//   let answer = exp[0].split("+")
+
+//   for (let i = 1; i < exp.length; i++) {
+//     console.log(35, exp[i]);
+
+//     if (exp[i].includes('+')) {
+//       let numbers = exp[i].split('+');
+//       answer -= +numbers[0] + +numbers[1];
+
+//       console.log(41, numbers);
+//       console.log(42, answer);
+//     } else {
+//       answer -= exp[i];
+
+//       console.log(46, answer);
+//     }
+//   }
+//   return answer;
+// }
+
+console.log(solution('10+20-30+40-50'));
