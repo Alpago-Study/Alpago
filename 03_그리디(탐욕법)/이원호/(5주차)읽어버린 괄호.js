@@ -15,7 +15,7 @@ function solution(str) {
   let strConverted = str.split('-');
   let result = [];
 
-  // ex) strConverted = ['55','50+40','30+90','10','20+30']
+  // ex) strConverted = ['55','50+40']
   // + 기준으로 다시 나눠주고, 나눠준 값이 문자열이기때문에 숫자로 바꿔줘야함
   // 1. ['55','50+40'] => 2. [['55'], ['50', '40']] => 3. [[55], [50, 40]]
   for (let i = 0; i < strConverted.length; i++) {
@@ -23,10 +23,11 @@ function solution(str) {
       return Number(el);
     });
     // 4. [[55], [50, 40]] => [[55], [90]]
-    let sum = strConverted[i].reduce((acc, cur) => acc + cur, 0);
+    let sum = strConverted[i].reduce((acc, cur) => acc + cur);
     // 더한값을 result 배열에 push
     result.push(sum);
   }
+
   // [55, 90] = > 55 - 90
   return result.reduce((acc, cur) => {
     return acc - cur;
