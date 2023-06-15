@@ -19,7 +19,6 @@ let input = fs.readFileSync('./ex.txt').toString().split('\n');
 
 // 돈을 인출하는데 걸리는 시간
 const time = input[1].split(' ').map(Number);
-// 전체 걸리는 시간
 time.sort((a, b) => a - b);
 // 각 순서에서 걸리는 시간을 담을 배열
 let timeArr = [];
