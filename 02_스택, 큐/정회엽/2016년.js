@@ -8,14 +8,14 @@
 
 //문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/12901
 
-// function solution(a, b) {
-//   const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-//   let date = new Date(`2016-${a}-${b}`);
-//   //특정 날짜 생성.
-//   let result = date.getDay();
-//   //특정요일 추출(0=SUN)
-//   return days[result];
-// }
+function solution(a, b) {
+  const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  let date = new Date(`2016-${a}-${b}`);
+  //특정 날짜 생성.
+  let result = date.getDay();
+  //특정요일 추출(0=SUN)
+  return days[result];
+}
 
 function solution(a, b) {
   const days = ['FRI', 'SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU'];
