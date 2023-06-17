@@ -64,8 +64,8 @@ function solution(number, k) {
 console.log(solution('1924', 2));
 console.log(solution('1231234', 3));
 console.log(solution('4177252841', 4));
-console.log(solution('222', 2));
-console.log(solution('4321', 1));
+// console.log(solution('222', 2));
+// console.log(solution('4321', 1));
 
 // 숫자로 변환해서 풀은 코드 (테스트케이스 10번 런타임 에러)
 /* function solution(number, k) {
