@@ -10,13 +10,11 @@
 function solution(people, limit) {
   let answer = 0;
   let arr = people.sort((a, b) => a - b);
-  // 50 50 70 80
 
   while (arr.length) {
     if (arr[0] + arr[arr.length - 1] <= limit) {
-      arr.shift(); // 앞에도 없어졌고
-      arr.pop(); // 뒤에도 없어졌오
-      // 50 70
+      arr.shift();
+      arr.pop();
     } else {
       arr.pop();
     }
@@ -28,3 +26,5 @@ function solution(people, limit) {
 
 console.log(solution([70, 50, 80, 50], 100));
 console.log(solution([70, 80, 50], 100));
+// 이 문제의 특징이라 하믄... 원래 풀던 방식대로 풀지 말고 예외도 생각해서 풀어줘야 한다
+console.log(solution([45, 45, 45, 45, 55, 55, 55, 55]));
