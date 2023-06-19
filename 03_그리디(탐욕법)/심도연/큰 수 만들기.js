@@ -52,3 +52,6 @@ function solution(number, k) {
   // result를 문자열로 바꿔주고 slice로 (0, 2) k개를 제외한 만큼의 큰 수를 반환한다
   return result.join('').slice(0, result.length - counter);
 }
+
+console.log(solution('1924', 2));
+console.log(solution('1231234', 3));
