@@ -9,6 +9,7 @@
 
 // 백준 정답
 // const fs = require('fs');
+
 // const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
 // const pi = input[1]
 //   .split(' ')
@@ -28,19 +29,42 @@
 // }
 // console.log(total);
 
+// reduce를 사용해 푼 방법
 const atm = (n, arr) => {
-  let pi = arr.split('').sort();
-  console.log(pi);
+  let pi = arr
+    .split('')
+    .map((el) => +el)
+    .sort();
+  // sort(); => 유니코드에 의해 sort((a,b) => a - b) 로 적어줘야한다
+  //   console.log(pi);
 
   let total = 0;
-  let sum = 0;
 
-  for (let i = 0; i < pi.length; i++) {
-    sum += +pi[i];
-    total += sum;
-  }
+  pi.reduce((acc, cur) => {
+    // acc를 누적해줄 값이 필요한 것이다
+    acc += cur;
+    total += acc;
+    // reduce에서 return acc는 다음 acc를 위한 값이므로 total이 아닌 acc를 반환해줘야 한다
+    // console.log(acc, total);
+    return acc;
+  }, 0);
 
   return total;
 };
+
+// const atm = (n, arr) => {
+//   let pi = arr.split('').sort();
+//   console.log(pi);
+
+//   let total = 0;
+//   let sum = 0;
+
+//   for (let i = 0; i < pi.length; i++) {
+//     sum += +pi[i];
+//     total += sum;
+//   }
+
+//   return total;
+// };
 
 console.log(atm(5, '31432'));
