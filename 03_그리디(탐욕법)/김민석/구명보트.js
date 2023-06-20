@@ -29,7 +29,7 @@ const solution = (people, limit) => {
   // : light는 내림차순으로 정렬한 배열 마지막 요소의 index
   for (let heavy = 0, light = people.length - 1; heavy <= light; heavy += 1) {
     // 3. 가장 무거운 사람의 무게와 가장 가벼운 사람의 무게를 더하기
-    // 3-1. 더한 값이 limit을 넘지 않는다면 heavy와 light를 둘 다 1씩 증가시키기
+    // 3-1. 더한 값이 limit을 넘지 않는다면 heavy는 1 증가시키고, light는 1 감소시키기
     // ⭐ 두 명을 함께 구명보트에 실어서 보낼 수 있기 때문 ⭐
     // 3-2. 더한 값이 limit을 초과한다면 heavy만 1을 증가시키기
     // ⭐ 무거운 한 명만 구명보트에 실어 보낼 수 있기 때문 ⭐
