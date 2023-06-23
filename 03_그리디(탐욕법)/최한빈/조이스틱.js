@@ -79,6 +79,8 @@ function solution(name) {
   // 1. a가 최대한 많이 뭉쳐있는 뭉티기를 찾은 후 뭉티기를 기준으로 남은 양 옆에 길이를 구함.
   // CCAAAXYZ => left,right = 2,3
   const [l, r] = findLeftRight(name);
+  // 만약 다 A라면 0 리턴
+  if (l === r && l === 0) return 0;
   // 2. 왼쪽과 오른쪽의 길이에 따라서 이동해야하는 경우가 달라진다.
   // i) 뭉티기를 기준으로 왼쪽과 오른쪽 길이가 같으면 첫번째 커서에서 오른쪽으로 조작(2번째로)
   // ii) 왼쪽이 더 길면 첫번째 커서에서 왼쪽으로 조작(맨 끝으로)
@@ -115,7 +117,7 @@ function solution(name) {
   }
   return answer;
 }
-// 실패 테스트 케이스: 5,12,16,17
+// 실패 테스트 케이스: 5,12
 console.log(solution('JZAAZ'));
 console.log(solution('JEROEN'));
 console.log(solution('JAN'));
