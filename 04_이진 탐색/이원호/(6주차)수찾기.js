@@ -1,0 +1,40 @@
+// [문제 이름]
+// : 수 찾기
+
+// [문제 설명]
+// : N개의 정수 A[1], A[2], …, A[N]이 주어져 있을 때, 이 안에 X라는 정수가 존재하는지 알아내는 프로그램을 작성하시오.
+
+// [문제 링크]
+// : https://www.acmicpc.net/problem/1920
+
+function solution(n, m) {
+  // 이진탐색을 위해 n배열 오름차순 정렬
+  n.sort((a, b) => a - b);
+
+  let result = [];
+
+  for (let i = 0; i < m.length; i++) {
+    let start = 0;
+    let end = n.length - 1;
+    let found = false;
+
+    while (start <= end) {
+      let mid = Math.floor((start + end) / 2);
+
+      if (n[mid] === m[i]) {
+        found = true;
+        break;
+      } else if (n[mid] < m[i]) {
+        start = mid + 1;
+      } else {
+        end = mid - 1;
+      }
+    }
+
+    result.push(found ? 1 : 0);
+  }
+
+  return result;
+}
+
+console.log(solution([4, 1, 5, 2, 3], [1, 3, 7, 9, 5]));

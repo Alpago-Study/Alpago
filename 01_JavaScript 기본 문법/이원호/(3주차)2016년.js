@@ -10,6 +10,7 @@
 
 function solution(a, b) {
   // 2016년 a-1월 b일의 date를 반환하고 해당 일의 요일을 숫자로 반환
+  // Sun Jan 02 2022 00:00:00 GMT+0900 (한국 표준시)
   const date = new Date(2016, a - 1, b).getDay();
 
   const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];

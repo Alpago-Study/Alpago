@@ -17,6 +17,7 @@ function solution(participant, completion) {
   let participantCopy = participant.slice();
 
   for (let i = 0; i < completion.length; i++) {
+    
     // 참여자 명단에 완주자 명단이 있는 경우 idx변수에 저장
     let idx = participantCopy.indexOf(completion[i]);
 

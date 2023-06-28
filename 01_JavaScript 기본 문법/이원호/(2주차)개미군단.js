@@ -22,10 +22,10 @@ function solution(hp) {
     B = Math.floor(restHp / 3); // 1
   }
 
-  let restHp2 = restHp - B * 3;
+  restHp = restHp - B * 3;
 
-  if (restHp2 !== 0) {
-    I = restHp2;
+  if (restHp !== 0) {
+    I = restHp;
   }
 
   return J + B + I;

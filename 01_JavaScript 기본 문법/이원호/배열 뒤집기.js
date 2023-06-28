@@ -7,15 +7,14 @@
 // [문제 링크]
 // : https://school.programmers.co.kr/learn/courses/30/lessons/120821
 
-
 function solution(num_list) {
   var answer = [];
-  
+
   // 배열을 순회하며 빈배열(answer)에 num_list의 마지막 요소부터 차례대로 push함
-  for(let i = 0 ; i < num_list.length ; i++){
-    answer.push(num_list[num_list.length - ( i+1)]);
+  for (let i = 0; i < num_list.length; i++) {
+    answer.push(num_list[num_list.length - (i + 1)]);
   }
   return answer;
 }
 
-console.log(solution([1, 2, 3, 4, 5]))
+console.log(solution([1, 2, 3, 4, 5]));
