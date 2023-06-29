@@ -16,7 +16,7 @@ function solution(n, m) {
 
   // m의 요소가 n배열에 있는지 확인하는 반복문
   for (let i = 0; i < m.length; i++) {
-    // 시작지점과 끝지점 설정
+    // 시작지점과 끝지점(index) 설정
     let start = 0;
     let end = n.length - 1;
     let found = false;
@@ -32,6 +32,10 @@ function solution(n, m) {
       // 다시 while문
       // mid = 0, n[0] = 1, m[0] = 1
       // if 조건 충족, found = true => 반복문 탈출
+
+      // n[mid]가 m[i]보다 작으면 원하는 요소가 나머지 검색 공간의 오른쪽 절반에 있음을 의미 => 시작 지점은 mid + 1로 업데이트
+      // n[mid]가 m[i]보다 크면 원하는 요소가 나머지 검색 공간의 왼쪽 절반에 있음을 의미 => 끝 지점은 mid - 1로 업데이트
+      // 업데이트된 시작지점과 끝지점을 기준으로 다시 mid를 구함 ( 찾는 값이 있을때까지 구하다 없으면 while 조건이 미충족할때까지 반복)
 
       if (n[mid] === m[i]) {
         found = true;
