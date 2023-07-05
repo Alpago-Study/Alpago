@@ -11,6 +11,9 @@
 function rotation(arr) {}
 
 function solution(arr, r) {
+  /*
+    사각형을 테두리에 있는것들을 돌리고 차례로 안쪽으로 들어가서 돌린다.
+  */
   const answer = 0;
   let [n, m] = [arr.length, arr[0].length];
   let num = Math.min(n, m) / 2;
