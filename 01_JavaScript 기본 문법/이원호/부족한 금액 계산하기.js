@@ -10,6 +10,7 @@
 // [문제 링크]
 // : https://school.programmers.co.kr/learn/courses/30/lessons/82612
 
+
 function solution(price, money, count) {
   // 금액이 부족하면 부족한 금액 리턴, 부족하지 않으면 0 리턴
 

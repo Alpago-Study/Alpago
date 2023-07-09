@@ -11,6 +11,7 @@
 // : https://school.programmers.co.kr/learn/courses/30/lessons/17681
 
 function solution(n, arr1, arr2) {
+  
   // 일단 배열 내 요소들을 2진법으로 바꿔보자
   let arr1B = [];
   let arr2B = [];
