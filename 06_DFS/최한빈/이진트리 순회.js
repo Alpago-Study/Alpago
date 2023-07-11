@@ -13,33 +13,33 @@
 //  / \   / \
 // 4  5  6  7
 
-// tree를 그냥 객체로 생각해서 풀었습니다.
+// 입력값으로 문제를 풀 아이디어가 생각나지 않아서 tree를 그냥 객체로 만들어서 풀었습니다.
 const tree = {
-  root: 1,
+  data: 1,
   left: {
-    root: 2,
+    data: 2,
     left: {
-      root: 4,
-      left: { root: null },
-      right: { root: null },
+      data: 4,
+      left: { data: null },
+      right: { data: null },
     },
     right: {
-      root: 5,
-      left: { root: null },
-      right: { root: null },
+      data: 5,
+      left: { data: null },
+      right: { data: null },
     },
   },
   right: {
-    root: 3,
+    data: 3,
     left: {
-      root: 6,
-      left: { root: null },
-      right: { root: null },
+      data: 6,
+      left: { data: null },
+      right: { data: null },
     },
     right: {
-      root: 7,
-      left: { root: null },
-      right: { root: null },
+      data: 7,
+      left: { data: null },
+      right: { data: null },
     },
   },
 };
@@ -48,9 +48,9 @@ function preOrder(tree, result) {
     [루트 - 왼쪽 자식 - 오른쪽 자식] 순으로 순회
   */
 
-  if (tree.root !== null) {
+  if (tree.data !== null) {
     // 루트를 먼저 방문
-    result.push(tree.root);
+    result.push(tree.data);
     // 재귀를 통해 왼쪽 노드도 [루트, 왼쪽, 오른쪽] 순으로 방문하게 된다.
     preOrder(tree.left, result);
     // 위와 같음
@@ -63,26 +63,26 @@ function inOrder(tree, result) {
     [왼쪽자식 - 루트 - 오른쪽 자식] 순으로 순회
   */
 
-  if (tree.root !== null) {
+  if (tree.data !== null) {
     // 왼쪽을 먼저 방문
     inOrder(tree.left, result);
     // 재귀를 통해 왼쪽 노드도 [왼쪽, 루트, 오른쪽] 순으로 방문하게 된다.
-    result.push(tree.root);
+    result.push(tree.data);
     inOrder(tree.right, result);
   }
   return result;
 }
 function postOrder(tree, result) {
-  /* 전위 순회 
+  /* 후위 순회 
     [왼쪽 자식 - 오른쪽 자식 - 루트] 순으로 순회
   */
-  if (tree.root !== null) {
+  if (tree.data !== null) {
     // 왼쪽을 먼저 방문
     postOrder(tree.left, result);
     // 이후에는 오른쪽
     postOrder(tree.right, result);
     // 재귀를 통해 루트는 가장 마지막에 출력된다.
-    result.push(tree.root);
+    result.push(tree.data);
   }
   return result;
 }
