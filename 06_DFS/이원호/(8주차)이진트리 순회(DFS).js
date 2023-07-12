@@ -31,8 +31,14 @@ class Tree {
   }
 
   //재귀를 이용하여 DFS 구현
+  // 공통사항: node == null 노트가 리프노드일때 재귀 탈출조건
+  //        1
+  //    2       3
+  //  4  5    6   7
+  //  이런 트리 가정
 
   //전위순회
+  //루트=>왼쪽=>오른쪽 순으로 순회
   preorder(node) {
     if (node != null) {
       console.log(node.value);
@@ -42,6 +48,7 @@ class Tree {
   }
 
   //중위 순회
+  //왼쪽=>루트=>오른쪽 순으로 순회
   inorder(node) {
     if (node != null) {
       this.inorder(node.left);
@@ -51,6 +58,7 @@ class Tree {
   }
 
   //후위순회
+  //왼쪽=>오른쪽=>루트 순으로 순회
   postorder(node) {
     if (node != null) {
       this.postorder(node.left);
@@ -101,7 +109,8 @@ node2.right = node5;
 node3.left = node6;
 node3.right = node7;
 
-// 트리구조 넣고 3가지 순회 레츠고
+console.log(tree.getRoot());
+// 만든 tree에 3가지 순회 레츠고
 console.log('전위순회');
 tree.preorder(tree.getRoot());
 
