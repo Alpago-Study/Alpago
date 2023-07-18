@@ -14,32 +14,83 @@
 // [문제 링크]
 // : https://www.acmicpc.net/problem/11723
 
-function solution(str) {
-  // 알파벳을 대소문자 구분 없이 하기 위해 대문자로 변경
-  str = str.toUpperCase();
+// 백준 문제풀이용 코드
+let fs = require('fs');
+const filePath = process.platform === 'linux' ? '/dev/stdin' : './ex.txt';
+let input = fs.readFileSync(filePath).toString().split('\n');
+const dict = {};
+for (let i = 1; i <= 20; i++) {
+  dict['' + i] = 0;
+}
+for (let i = 1; i <= input[0]; i++) {
+  let [act, num] = input[i].split(' ');
 
-  // 횟수 담을 객체 선언
-  const obj = {};
-
-  // 최대 횟수를 저장할 변수와 그 알파벳을 저장할 변수
-  let max = 0;
-  let answer;
-
-  for (i of str) {
-    // 만약 알파벳이 처음 등장하면 1을 초기값으로 설정
-    if (obj[i] === undefined) obj[i] = 1;
-    // 아니라면 +1
-    else obj[i] += 1;
-    // max값도 계속해서 최신화해준다.
-    if (max < obj[i]) {
-      max = obj[i];
-      answer = i;
-    } else if (max === obj[i]) answer = '?';
+  switch (act) {
+    case 'add':
+      // 집합에 원소 추가 -> dict[num] = 1
+      dict[num] = 1;
+      break;
+    case 'remove':
+      // 집합에 원소 삭제 -> dict[num] = 0
+      dict[num] = 0;
+      break;
+    case 'check':
+      // 원소가 집합에 있는지 확인 -> dict[num]이 0인지 1인지
+      dict[num] ? console.log(1) : console.log(0);
+      break;
+    case 'toggle':
+      // 원소가 있으면 제거하고 없으면 추가
+      dict[num] = dict[num] ? 0 : 1;
+      break;
+    case 'all':
+      // 집합을 {1,2,...,20} 으로 바꾼다.
+      for (let j = 1; j <= 20; j++) {
+        dict['' + j] = 1;
+      }
+      break;
+    case 'empty':
+      // 집합을 비운다
+      for (let j = 1; j <= 20; j++) {
+        dict['' + j] = 0;
+      }
+      break;
+    default:
+      break;
   }
-  return answer;
 }
 
-console.log(solution('mississipi'));
-console.log(solution('zZa'));
-console.log(solution('z'));
-console.log(solution('baaa'));
+// let set = new Set();
+// for (let i = 1; i <= input[0]; i++) {
+//   let [act, num] = input[i].split(" ");
+//   num = Number(num);
+//   switch (act) {
+//     case "add":
+//       // 집합에 원소 추가
+//       set.add(num);
+//       break;
+//     case "remove":
+//       set.delete(num);
+//       // 집합에 원소 삭제
+//       break;
+//     case "check":
+//       set.has(num) ? console.log(1) : console.log(0);
+//       // 원소가 집합에 있는지 확인
+//       break;
+//     case "toggle":
+//       set.has(num) ? set.delete(num) : set.add(num);
+//       // 원소가 있으면 제거하고 없으면 추가
+//       break;
+//     case "all":
+//       set = new Set([
+//         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+//       ]);
+//       // 집합을 {1,2,...,20} 으로 바꾼다.
+//       break;
+//     case "empty":
+//       set = new Set();
+//       // 집합을 비운다
+//       break;
+//     default:
+//       break;
+//   }
+// }
