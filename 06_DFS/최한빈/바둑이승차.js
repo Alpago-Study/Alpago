@@ -10,7 +10,6 @@
 function solution(limit, weights) {
   let result = [];
   const dfs = (v, sum) => {
-    // 무게의 합이 제한을 넘어가면 return
     if (sum > limit) return;
     if (v === weights.length) {
       // 전체 탐색을 마친경우 결과에 push
