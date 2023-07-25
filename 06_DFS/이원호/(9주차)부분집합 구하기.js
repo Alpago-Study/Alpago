@@ -4,7 +4,7 @@
 // : 문제 링크로 대체
 
 // [문제 링크]
-// : https://file.notion.so/f/s/c2ce5892-bae4-4561-9ed3-3c77eedf1825/Untitled.png?id=6eb61047-369a-4d7a-b5ce-c64bf103c234&table=block&spaceId=5893e798-2384-4f46-9548-637dc7a31a9f&expirationTimestamp=1689609600000&signature=dzESDiWs2ytNwkUZcDUFq38353eZsH2W9V5SkIvnhNE&downloadName=Untitled.png
+// : https://www.notion.so/alpago-study/DFS-e6153dad01ff42c098fa9b6b833cf6ea?pvs=4#6eb61047369a4d7ab5cec64bf103c234
 
 function solution(n) {
   let answer = [];
@@ -36,7 +36,6 @@ function solution(n) {
   }
 
   dfs(1);
-
   return answer;
 }
 
