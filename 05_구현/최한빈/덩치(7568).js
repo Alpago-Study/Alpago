@@ -17,6 +17,104 @@
 // [문제 링크]
 // : https://www.acmicpc.net/problem/7568
 
+// 뻘짓한 코드
+// 백준 문제풀이용 코드
+let fs = require('fs');
+const filePath = process.platform === 'linux' ? '/dev/stdin' : './ex.txt';
+let input = fs.readFileSync(filePath).toString().split('\n');
+const n = +input.shift();
+
+// 덩치 순 정렬된 queue
+const queue = [];
+// 순위를 담을 배열
+let rank = [];
+let rest = [];
+let rankRest = [];
+let count = 0;
+for (let i = 0; i < n; i++) {
+  const [w, h] = input[i].split(' ').map(Number);
+
+  // 초기 큐가 비워있는 상태에는 첫번째 값 그대로 푸쉬, 랭크도 1로 셋팅
+  if (i === 0) {
+    rank.push(1);
+    queue.push([w, h]);
+    count = 1;
+  } else
+    while (true) {
+      // 제일 커서 가장 맨 앞에 추가되는 경우
+      if (queue.length === 0) {
+        // 푸쉬하고 나머지 원소들 푸쉬
+        queue.push([w, h]);
+        queue.push(...rest);
+        // 랭크는 1푸쉬하고 나머지 랭크들+1 해서 푸쉬
+        rank.push(1);
+        rank.push(...rankRest.map((ele) => ele + 1));
+        rest = [];
+        rankRest = [];
+        break;
+      }
+      // 앞사람보다 키, 몸무게 둘다 작으면 그냥 뒤에 배치
+      if (queue[queue.length - 1][0] > w && queue[queue.length - 1][1] > h) {
+        // 현재 원소를 맨 뒤에 추가
+        queue.push([w, h]);
+        // 나머지 배열들도 그 뒤에 추가
+        queue.push(...rest);
+        // 랭크는 현재 쌓인 count만큼 더해줌
+        rank.push(rank[rank.length - 1] + count);
+        // 나머지 뒤에 오는 원소도 count 만큼 더해줌
+        rank.push(...rankRest.map((ele) => ele + count));
+        // 다시 count 1로 셋팅
+        count = 1;
+        rest = [];
+        rankRest = [];
+        break;
+        // 앞 사람보다 키 혹은 몸무게만 커서 둘이 같은 등수일 경우
+      } else if (
+        queue[queue.length - 1][0] > w &&
+        queue[queue.length - 1][1] < h
+      ) {
+        queue.push([w, h]);
+        queue.push(...rest);
+        // 랭크는 앞에 있는 원소와 동일
+        rank.push(rank[rank.length - 1]);
+        // 나머지는 쌓인만큼 더해줌
+        rank.push(...rankRest.map((ele) => ele + count));
+        rest = [];
+        rankRest = [];
+        // count는 1만큼 쌓임
+        count++;
+        break;
+      } else if (
+        queue[queue.length - 1][0] < w &&
+        queue[queue.length - 1][1] > h
+      ) {
+        queue.push([w, h]);
+        queue.push(...rest);
+        rank.push(rank[rank.length - 1]);
+        rank.push(...rankRest.map((ele) => ele + count));
+        rest = [];
+        rankRest = [];
+        count++;
+        break;
+      }
+      // 앞사람보다 더 커서 앞으로 들어가야 하는 경우
+      else {
+        // 맨 뒤에 원소를 빼서 나머지 배열에 추가
+        rest.push(queue.pop());
+        // 랭크도 마찬가지
+        rankRest.push(rank.pop());
+      }
+    }
+}
+let answer = '';
+for (let i = 0; i < n; i++) {
+  const [w, h] = input[i].split(' ').map(Number);
+  const idx = queue.findIndex((ele) => ele[0] === w && ele[1] === h);
+  answer += rank[idx] + ' ';
+}
+console.log(answer);
+
+// 레퍼런스 참고한 코드
 // 백준 문제풀이용 코드
 let fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './ex.txt';
@@ -34,37 +132,3 @@ arr.forEach((ele) => {
   newArr.push(bigger + 1);
 });
 console.log(newArr.join(' '));
-
-// 뻘짓한 코드
-// // 무게와 키가 큰 사람이 있는 명수로 sort
-// newArr.sort((a, b) => a[1] - b[1]);
-// let num = 1;
-// let k = 1;
-// const rank = [];
-// // 등수배열을 만든다.
-// for (let i = 0; i < newArr.length; i++) {
-//   // 배열이 비어잇으면 첫번째 사람은 1등
-//   if (i === 0) rank.push([...newArr[i], num]);
-//   else {
-//     // 배열이 있다면 이전에 사람과 비교
-//     const prev = rank[rank.length - 1][1];
-//     // 명수가 같으면 같은 등수
-//     if (prev === newArr[i][1]) {
-//       rank.push([...newArr[i], num]);
-//       // 다음 등수는 앞에 사람만큼 + 해줘야 하므로 k를 증가
-//       k++;
-//     } else {
-//       // 등수를 앞에 사람만큼 더해준다
-//       num += k;
-//       rank.push([...newArr[i], num]);
-//       // 다시 앞에 사람은 1로 초기화
-//       k = 1;
-//     }
-//   }
-// }
-// console.log(
-//   rank
-//     .sort((a, b) => a[0] - b[0])
-//     .map((ele) => ele[2])
-//     .join(" ")
-// );
