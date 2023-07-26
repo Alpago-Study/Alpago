@@ -116,19 +116,19 @@ console.log(answer);
 
 // 레퍼런스 참고한 코드
 // 백준 문제풀이용 코드
-let fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './ex.txt';
-let input = fs.readFileSync(filePath).toString().split('\n');
-const n = +input[0];
-const arr = [];
-for (let i = 1; i <= n; i++) {
-  arr.push(input[i].split(' ').map(Number));
-}
-const newArr = [];
-arr.forEach((ele) => {
-  // 무게와 키가 둘다 큰 사람이 있는지 확인.
-  // 아무도 없다면 1등, 있다면 (사람들 수 + 1)등
-  const bigger = arr.filter((e) => e[0] > ele[0] && e[1] > ele[1]).length;
-  newArr.push(bigger + 1);
-});
-console.log(newArr.join(' '));
+// let fs = require('fs');
+// const filePath = process.platform === 'linux' ? '/dev/stdin' : './ex.txt';
+// let input = fs.readFileSync(filePath).toString().split('\n');
+// const n = +input[0];
+// const arr = [];
+// for (let i = 1; i <= n; i++) {
+//   arr.push(input[i].split(' ').map(Number));
+// }
+// const newArr = [];
+// arr.forEach((ele) => {
+//   // 무게와 키가 둘다 큰 사람이 있는지 확인.
+//   // 아무도 없다면 1등, 있다면 (사람들 수 + 1)등
+//   const bigger = arr.filter((e) => e[0] > ele[0] && e[1] > ele[1]).length;
+//   newArr.push(bigger + 1);
+// });
+// console.log(newArr.join(' '));
