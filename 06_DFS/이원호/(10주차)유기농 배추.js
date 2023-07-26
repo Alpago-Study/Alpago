@@ -8,10 +8,6 @@
 // [문제 링크]
 // : https://www.acmicpc.net/problem/1012
 
-// N : 문제의 개수,
-// M : 제한 시간,
-// problems : 각 문제의 점수와 시간이 담긴 이차원 배열
-
 function solution(row, col, locations) {
   // 0 으로 채운 2차원 배열 만들어주기
   const cabbageField = Array.from({ length: row }, () => Array(col).fill(0));
