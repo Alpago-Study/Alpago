@@ -14,9 +14,10 @@
 
 // [문제 링크]
 // : https://www.acmicpc.net/problem/10431
-
+// 오름차순으로 아이들 키를 정렬하는 중 아이들이 움직인(뒤로 간) 횟수를 구하는 문제
 const line_up = (arr) => {
   // 몇번 뒤로 갔는지 세는 count 변수
+  // ⭐️ i와 j 사이에 있는 수들이 한발짝 뒤로 가는 횟수 세는 변수
   let count = 0;
 
   for (let i = 1; i < arr.length; i++) {
